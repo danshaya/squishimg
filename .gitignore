@@ -33,5 +33,4 @@ build/
 .vscode/
 
 /uploaded
-src/main/resources/static/frontend/dist/frontend/main.js
-src/main/resources/static/frontend/dist/frontend/main.js.map
+/src/main/resources/static/frontend/dist/
