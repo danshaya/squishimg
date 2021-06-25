@@ -1,0 +1,70 @@
+<div class="row">
+    <div class="col-12 mb-2">
+        <img src="/img/banner.jpg" class="rounded img-fluid" alt="banner image">
+    </div>
+
+    <div class="col-12 mt-2 mb-2">
+        <div class="center">
+            <ngx-file-drop 
+                dropZoneLabel="Drop files here"
+                dropZoneClassName="dropZone-style"
+                contentClassName="dropZoneContent-style"
+                (onFileDrop)="dropped($event)"
+                [directory]="false"
+                accept=".png,.jpg,.jpeg,.gif">
+                <ng-template ngx-file-drop-content-tmp let-openFileSelector="openFileSelector">
+                    Drop image files here or
+                    &nbsp; &nbsp;
+                    <button class="btn btn-primary" type="button" (click)="openFileSelector()">Click to browse files</button>
+                </ng-template>
+            </ngx-file-drop>
+            <p class="text-center mt-1 mb-2">allowed extensions: png, jpg, jpeg, gif</p>
+            <div class="upload-table">
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th style="width:50%" scope="col">name</th>
+                            <th style="width:20%" scope="col">status</th>
+                            <th style="width:20%" scope="col">progress</th>
+                            <th style="width:10%" scope="col">action</th>
+                        </tr>
+                    </thead>
+                    <tbody class="upload-name-style">
+                        <tr *ngFor="let item of files; let i = index">
+                            <td><strong>{{ item.relativePath }}</strong></td>
+                            <td><p class="text-{{ item.status.getLevel() }}">
+                                {{ item.status.getMessage() }}</p></td>
+                            <td>
+                                <div class="progress mb-0" style="height:20px;">
+                                    <div 
+                                        class="progress-bar" 
+                                        role="progressbar" 
+                                        [style.width]="item.status.progress + '%'"
+                                        [attr.aria-valuenow]="item.status.progress" 
+                                        aria-valuemin="0" 
+                                        aria-valuemax="100"></div>
+                                </div>
+                            </td>
+                            <td>
+                                <div *ngIf="item.uploadResponse" class="btn-group" role="group" aria-label="Actions">
+                                    <button 
+                                        title="download compressed image"
+                                        (click)="downloadCompressedImage(item.uploadResponse)"
+                                        type="button" 
+                                        class="btn btn-sm btn-primary">
+                                        <i class="fa fa-arrow-down"></i></button>
+                                    <button 
+                                        title="copy to clipboard" 
+                                        (click)="compressedImageUrlToClipboard(item.uploadResponse)"
+                                        type="button" 
+                                        class="btn btn-sm btn-secondary">
+                                        <i class="fa fa-clipboard"></i></button>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,3 @@
+           :: SquishImg ::
+           +++++++++++++++
+:: Built with Spring Boot v${spring-boot.version} ::
