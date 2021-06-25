@@ -8,6 +8,9 @@ Image compression web application built with Angular 12 and Java spring boot usi
 4. NPM
 
 ## How to run
+### Update Maven dependencies
+Make sure all maven dependencies have been downloaded
+
 ### Check angular application has been compiled
 The compiled frontend app has been included in the repo. Should any changes need to be made, it can be found in the directory 
 ```
